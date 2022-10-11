@@ -9,37 +9,41 @@ import UIKit
 
 class PokedexTableViewController: UITableViewController {
 
+    // Temporary array to break results out of closure
+    var pokedexResults: [PokemonResult] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // Moving forward always call it "result" to perform success or failure
+        NetworkingController.fetchPokedex { result in
+            switch result {
+            case .success(let pokedex):
+                self.pokedexResults = pokedex.results
+                // All UI visual changes need to be on the main thread
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                // errorDescription is our ResultError
+                print("error", error.errorDescription!)
+            }
+        }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return pokedexResults.count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pokedexCell", for: indexPath)
+        let pokedexResult = pokedexResults[indexPath.row]
+        cell.textLabel?.text = pokedexResult.name
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
