@@ -18,6 +18,7 @@ class PokedexTableViewController: UITableViewController {
         NetworkingController.fetchPokedex(with: URL(string: "https://pokeapi.co/api/v2/pokemon")!) { [weak self] result in
             switch result {
             case .success(let pokedex):
+                self?.pokedex = pokedex
                 self?.pokedexResults = pokedex.results
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
@@ -36,6 +37,7 @@ class PokedexTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath) as? PokemonTableViewCell else {return UITableViewCell()}
+        
         let pokemonURLString = pokedexResults[indexPath.row].url
         cell.updateViews(pokemonURlString: pokemonURLString)
         return cell
@@ -45,14 +47,14 @@ class PokedexTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastPokedexIndex = pokedexResults.count - 1
         guard let pokedex = pokedex,
-              let nextURLString = (pokedex.next) else {return}
+              let nextURL = URL(string: pokedex.next) else {return}
         
         if indexPath.row == lastPokedexIndex {
-            NetworkingController.fetchPokemon(with: nextURLString) { result in
+            NetworkingController.fetchPokedex(with: nextURL) { [weak self] result in
                 switch result {
                 case .success(let pokedex):
-                    self.pokedex = pokedex
-                    self?.pokedexResults.append(pokedex.results)
+                    self?.pokedex = pokedex
+                    self?.pokedexResults.append(contentsOf: pokedex.results)
                     DispatchQueue.main.async {
                         self?.tableView.reloadData()
                     }
