@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GxB-9Z-Isg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gj3-3F-Toe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,25 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="What Pokemon are you looking for?" translatesAutoresizingMaskIntoConstraints="NO" id="JPy-W5-i9E">
-                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="2To-hv-sNb">
-                                <rect key="frame" x="8" y="185" width="398" height="260"/>
+                                <rect key="frame" x="8" y="193" width="398" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="8UT-Fs-HHa"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gjS-zX-eFI">
-                                <rect key="frame" x="87" y="251" width="240" height="128"/>
+                                <rect key="frame" x="87" y="259" width="240" height="128"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="t7g-Ix-0tY">
-                                <rect key="frame" x="8" y="475" width="398" height="379"/>
+                                <rect key="frame" x="8" y="483" width="398" height="371"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="moveCell" textLabel="oPM-Md-wka" style="IBUITableViewCellStyleDefault" id="0LX-44-cNe">
-                                        <rect key="frame" x="0.0" y="44.5" width="398" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="398" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0LX-44-cNe" id="LB9-2f-aAa">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="43.5"/>
@@ -53,7 +50,7 @@
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hjN-Al-dwP">
-                                <rect key="frame" x="32.5" y="114" width="349" height="50"/>
+                                <rect key="frame" x="19" y="122" width="376" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBN-ng-myE">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -62,7 +59,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a Pokemon" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAZ-Wp-D7f">
-                                        <rect key="frame" x="60" y="6.5" width="289" height="37"/>
+                                        <rect key="frame" x="60" y="4.5" width="316" height="41"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -75,34 +72,31 @@
                         <constraints>
                             <constraint firstItem="2To-hv-sNb" firstAttribute="top" secondItem="hjN-Al-dwP" secondAttribute="bottom" constant="21" id="2Dm-Of-m3p"/>
                             <constraint firstItem="ivP-z4-fsO" firstAttribute="trailing" secondItem="2To-hv-sNb" secondAttribute="trailing" constant="8" id="7uN-DY-d9k"/>
-                            <constraint firstItem="hjN-Al-dwP" firstAttribute="top" secondItem="JPy-W5-i9E" secondAttribute="bottom" constant="19" id="9pA-gl-4cz"/>
                             <constraint firstItem="gjS-zX-eFI" firstAttribute="height" secondItem="2To-hv-sNb" secondAttribute="height" multiplier="0.492308" id="AIl-3r-lYx"/>
-                            <constraint firstItem="JPy-W5-i9E" firstAttribute="trailing" secondItem="ivP-z4-fsO" secondAttribute="trailing" id="LQo-7s-i2k"/>
                             <constraint firstItem="hjN-Al-dwP" firstAttribute="centerX" secondItem="2To-hv-sNb" secondAttribute="centerX" id="OhI-HQ-7cP"/>
                             <constraint firstItem="gjS-zX-eFI" firstAttribute="centerY" secondItem="2To-hv-sNb" secondAttribute="centerY" id="Umv-ic-GcW"/>
                             <constraint firstItem="gjS-zX-eFI" firstAttribute="centerX" secondItem="2To-hv-sNb" secondAttribute="centerX" id="V1l-lY-wBT"/>
                             <constraint firstItem="t7g-Ix-0tY" firstAttribute="top" secondItem="2To-hv-sNb" secondAttribute="bottom" constant="30" id="XeH-0W-DR3"/>
                             <constraint firstItem="t7g-Ix-0tY" firstAttribute="leading" secondItem="ivP-z4-fsO" secondAttribute="leading" constant="8" id="YQI-nI-CXP"/>
-                            <constraint firstItem="JPy-W5-i9E" firstAttribute="leading" secondItem="ivP-z4-fsO" secondAttribute="leading" id="Z4S-BX-Gza"/>
-                            <constraint firstItem="JPy-W5-i9E" firstAttribute="top" secondItem="ivP-z4-fsO" secondAttribute="top" id="am8-bg-Ppw"/>
                             <constraint firstItem="gjS-zX-eFI" firstAttribute="width" secondItem="2To-hv-sNb" secondAttribute="width" multiplier="0.603015" id="g4E-LE-IWY"/>
                             <constraint firstItem="2To-hv-sNb" firstAttribute="leading" secondItem="ivP-z4-fsO" secondAttribute="leading" constant="8" id="kvu-js-iEK"/>
                             <constraint firstItem="ivP-z4-fsO" firstAttribute="trailing" secondItem="t7g-Ix-0tY" secondAttribute="trailing" constant="8" id="msY-Sy-3SU"/>
+                            <constraint firstItem="hjN-Al-dwP" firstAttribute="top" secondItem="ivP-z4-fsO" secondAttribute="top" constant="30" id="n9Y-0G-QW0"/>
                             <constraint firstItem="2To-hv-sNb" firstAttribute="centerX" secondItem="ivP-z4-fsO" secondAttribute="centerX" id="r1z-cj-rkG"/>
                             <constraint firstItem="ivP-z4-fsO" firstAttribute="bottom" secondItem="t7g-Ix-0tY" secondAttribute="bottom" constant="8" id="z6W-6V-wgn"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="2z5-Ce-jXF"/>
                     <connections>
                         <outlet property="pokemonIDLabel" destination="OBN-ng-myE" id="cUM-Lh-Uzt"/>
                         <outlet property="pokemonMovesTableView" destination="t7g-Ix-0tY" id="E93-mx-o4v"/>
                         <outlet property="pokemonNameLabel" destination="FAZ-Wp-D7f" id="Uwl-Wv-YLA"/>
-                        <outlet property="pokemonSearchBar" destination="JPy-W5-i9E" id="asA-OP-Qci"/>
                         <outlet property="pokemonSpriteImageView" destination="gjS-zX-eFI" id="WtX-lk-df8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="115"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="114.50892857142857"/>
         </scene>
         <!--Pokedex Table View Controller-->
         <scene sceneID="GWd-Qp-rHZ">
@@ -114,7 +108,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokemonCell" rowHeight="78" id="bDT-EI-g8S" customClass="PokemonTableViewCell" customModule="Pokedex_Codable" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="78"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bDT-EI-g8S" id="8du-PG-opZ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
@@ -158,6 +152,7 @@
                                     <outlet property="pokemonIDLabel" destination="ar1-z9-B6g" id="Tn4-tE-ADc"/>
                                     <outlet property="pokemonImageView" destination="Ltb-nj-mVd" id="uht-4e-Xjx"/>
                                     <outlet property="pokemonNameLabel" destination="xaI-ns-QLd" id="wul-gK-PWw"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toVC" id="Vyg-TC-LfP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -166,10 +161,29 @@
                             <outlet property="delegate" destination="GxB-9Z-Isg" id="gwF-hZ-esu"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="5mc-df-xZ2"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAl-xa-2OB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-575" y="115"/>
+            <point key="canvasLocation" x="334.78260869565219" y="114.50892857142857"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rn6-Iu-SjP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gj3-3F-Toe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BQX-Vr-oDe">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GxB-9Z-Isg" kind="relationship" relationship="rootViewController" id="YXx-hZ-cWQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fx9-c9-vD2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-575.36231884057975" y="114.50892857142857"/>
         </scene>
     </scenes>
     <resources>
