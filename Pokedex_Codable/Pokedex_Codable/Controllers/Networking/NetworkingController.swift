@@ -51,50 +51,52 @@ class NetworkingController {
     }
     
     
-    static func fetchPokemon(with searchTerm: String, completion: @escaping (Pokemon?) -> Void) {
+    static func fetchPokemon(with urlString: String, completion: @escaping (Result<Pokemon, ResultError>) -> Void) {
+        guard let finalURL = URL(string: urlString) else {
+            completion(.failure(.invalidURL(urlString)))
+            return
+            
+        }
         
-//        guard let baseURL = URL(string: baseURLString) else {return}
-//        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-//        urlComponents?.path = "/api/v2/pokemon/\(searchTerm.lowercased())"
-//
-//        guard let finalURL = urlComponents?.url else {return}
-//        print(finalURL)
-//
-//        URLSession.shared.dataTask(with: finalURL) { dTaskData, _, error in
-//            if let error = error {
-//                print("Encountered error: \(error.localizedDescription)")
-//                completion(nil)
-//            }
-//
-//            guard let pokemonData = dTaskData else {return}
-//
-//            do {
-//                if let topLevelDict = try JSONSerialization.jsonObject(with: pokemonData, options: .allowFragments) as? [String:Any]
-//                {
-//                    let pokemon = Pokemon(dictionary: topLevelDict)
-//                    completion(pokemon)
-//                }
-//            } catch {
-//                print("Encountered error when decoding the data:", error.localizedDescription)
-//                completion(nil)
-//            }
-//        }.resume()
+        URLSession.shared.dataTask(with: finalURL) { dTaskData, _, error in
+            if let error = error {
+                print("Encountered error: \(error.localizedDescription)")
+                completion(.failure(.thrownError(error)))
+            }
+            
+            guard let pokemonData = dTaskData else {
+                completion(.failure(.noData))
+                return}
+            
+            do {
+                let pokemon = try JSONDecoder().decode(Pokemon.self, from: pokemonData)
+                completion(.success(pokemon))
+            } catch {
+                print("Encountered error when decoding the data:", error.localizedDescription)
+                completion(.failure(.unableToDecode))
+            }
+        }.resume()
     }
     
     
-    static func fetchImage(for pokemon: Pokemon, completetion: @escaping (UIImage?) -> Void) {
-//        guard let imageURL = URL(string: pokemon.spritePath) else {return}
-//
-//        URLSession.shared.dataTask(with: imageURL) { data, _, error in
-//            if let error = error {
-//                print("There was an error", error.localizedDescription)
-//                completetion(nil)
-//            }
-//            guard let data = data else {
-//                return
-//            }
-//            let pokemonImage = UIImage(data: data)
-//            completetion(pokemonImage)
-//        }.resume()
+    static func fetchImage(for imageString: String, completion: @escaping (Result<UIImage, ResultError>) -> Void) {
+        guard let imageURL = URL(string: imageString) else {
+            completion(.failure(.invalidURL(imageString)))
+            return}
+        
+        URLSession.shared.dataTask(with: imageURL) { data, _, error in
+            if let error = error {
+                print("There was an error", error.localizedDescription)
+                completion(.failure(.thrownError(error)))
+            }
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            guard let pokemonImage = UIImage(data: data) else {
+                completion(.failure(.unableToDecode))
+                return }
+            completion(.success(pokemonImage))
+        }.resume()
     }
 }// end
