@@ -10,6 +10,7 @@ import UIKit
 class PokedexTableViewController: UITableViewController {
     
     var pokedexResults: [PokemonResults] = []
+    var pokedex: Pokedex?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,27 @@ class PokedexTableViewController: UITableViewController {
         return cell
     }
     
+    // Pagination
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastPokedexIndex = pokedexResults.count - 1
+        guard let pokedex = pokedex,
+              let nextURLString = (pokedex.next) else {return}
+        
+        if indexPath.row == lastPokedexIndex {
+            NetworkingController.fetchPokemon(with: nextURLString) { result in
+                switch result {
+                case .success(let pokedex):
+                    self.pokedex = pokedex
+                    self?.pokedexResults.append(pokedex.results)
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    print("There was an error!", error.errorDescription!)
+                }
+            }
+        }
+    }
     
     // MARK: - Navigation
     

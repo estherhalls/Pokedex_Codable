@@ -77,4 +77,6 @@ struct NetworkingController {
             completion(.success(pokemonImage))
         }.resume()
     }
+    
+    
 }// end

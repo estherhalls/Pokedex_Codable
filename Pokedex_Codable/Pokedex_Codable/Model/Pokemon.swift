@@ -26,6 +26,10 @@ struct Pokemon: Decodable {
 }
 
 struct Move: Decodable {
+    let move: Name
+}
+
+struct Name: Decodable {
     let name: String
 }
 
