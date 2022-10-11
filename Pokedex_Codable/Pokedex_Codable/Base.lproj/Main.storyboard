@@ -152,7 +152,7 @@
                                     <outlet property="pokemonIDLabel" destination="ar1-z9-B6g" id="Tn4-tE-ADc"/>
                                     <outlet property="pokemonImageView" destination="Ltb-nj-mVd" id="uht-4e-Xjx"/>
                                     <outlet property="pokemonNameLabel" destination="xaI-ns-QLd" id="wul-gK-PWw"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toVC" id="Vyg-TC-LfP"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toDetailVC" id="Vyg-TC-LfP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
