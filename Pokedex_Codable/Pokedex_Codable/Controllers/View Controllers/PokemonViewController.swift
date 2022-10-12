@@ -16,6 +16,7 @@ class PokemonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Allowing view controller to adopt table view capacities
         pokemonMovesTableView.dataSource = self
     }
     
